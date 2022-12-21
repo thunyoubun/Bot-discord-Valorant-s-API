@@ -5,6 +5,9 @@ import requests
 import riot_auth
 from discord.ext import commands
 from utils.api import *
+from datetime import timedelta
+import time
+
 
 
 class Command(commands.Cog):
@@ -36,41 +39,56 @@ class Command(commands.Cog):
     @commands.command()
     async def login(self,ctx, username : str , password : str):        
         skin_data = await check_item_shop(username,password)
-        print(skin_data)
+        #print(skin_data)
 
-        embed = discord.Embed(title=skin_data["bundle_name"])
-        embed.set_image(url=skin_data["bundle_image"])
+        # embed = discord.Embed(title=skin_data["bundle_name"])
+        # embed.set_image(url=skin_data["bundle_image"])
+        # await ctx.send(embed=embed)
+        
+        embed = discord.Embed(title=f"Daily store for {ctx.author} | Remaining in {int(skin_data['SingleItemOffersRemainingDurationInSeconds']/3600)} hour" ,color= discord.Color.random())
+        embed.set_author(name=ctx.author, icon_url= ctx.author.avatar)
         await ctx.send(embed=embed)
         try:
-            embed = discord.Embed(title=f"{skin_data['skin1_name']} costs {skin_data['skin1_price']}")
+            
+            embed = discord.Embed(title=f"{skin_data['skin1_name']}", description= f"{skin_data['skin1_price']}" ,color= discord.Color.blue())
             if skin_data["skin1_image"] != None:
-                embed.set_image(url=skin_data["skin1_image"])
+                embed.set_thumbnail(url=skin_data["skin1_image"])    
             await ctx.send(embed=embed)
-            embed = discord.Embed(title=f"{skin_data['skin2_name']} costs {skin_data['skin2_price']}")
+
+            embed = discord.Embed(title=f"{skin_data['skin2_name']}", description= f"{skin_data['skin2_price']}" ,color= discord.Color.blue())
             if skin_data["skin2_image"] != None:
-                embed.set_image(url=skin_data["skin2_image"])
+                embed.set_thumbnail(url=skin_data["skin2_image"])    
             await ctx.send(embed=embed)
-            embed = discord.Embed(title=f"{skin_data['skin3_name']} costs {skin_data['skin3_price']}")
+
+            embed = discord.Embed(title=f"{skin_data['skin3_name']}", description= f"{skin_data['skin3_price']}" ,color= discord.Color.blue())
             if skin_data["skin3_image"] != None:
-                embed.set_image(url=skin_data["skin3_image"])
+                embed.set_thumbnail(url=skin_data["skin3_image"])    
             await ctx.send(embed=embed)
-            embed = discord.Embed(title=f"{skin_data['skin4_name']} costs {skin_data['skin4_price']}")
+
+            embed = discord.Embed(title=f"{skin_data['skin4_name']}", description= f"{skin_data['skin4_price']}" ,color= discord.Color.blue())
             if skin_data["skin4_image"] != None:
-                embed.set_image(url=skin_data["skin4_image"])
+                embed.set_thumbnail(url=skin_data["skin4_image"])    
             await ctx.send(embed=embed)
+            
         except TypeError:
-            embed = discord.Embed(title=f"{skin_data['skin1_name']} costs {skin_data['skin1_price']}",)
-            embed.set_image(url=skin_data["skin1_image"])
+            embed = discord.Embed(title=f"{skin_data['skin1_name']}", description= f"{skin_data['skin1_price']}" ,color= discord.Color.blue())
+            embed.set_thumbnail(url=skin_data["skin1_image"])    
             await ctx.send(embed=embed)
-            embed = discord.Embed(title=f"{skin_data['skin2_name']} costs {skin_data['skin2_price']}",)
-            embed.set_image(url=skin_data["skin2_image"])
+
+            embed = discord.Embed(title=f"{skin_data['skin2_name']}", description= f"{skin_data['skin2_price']}" ,color= discord.Color.blue())
+    
+            embed.set_thumbnail(url=skin_data["skin2_image"])    
             await ctx.send(embed=embed)
-            embed = discord.Embed(title=f"{skin_data['skin3_name']} costs {skin_data['skin3_price']}",)
-            embed.set_image(url=skin_data["skin3_image"])
+
+            embed = discord.Embed(title=f"{skin_data['skin3_name']}", description= f"{skin_data['skin3_price']}" ,color= discord.Color.blue())
+            embed.set_thumbnail(url=skin_data["skin3_image"])    
             await ctx.send(embed=embed)
-            embed = discord.Embed(title=f"{skin_data['skin4_name']} costs {skin_data['skin4_price']}",)
-            embed.set_image(url=skin_data["skin4_image"])
+
+            embed = discord.Embed(title=f"{skin_data['skin3_name']}", description= f"{skin_data['skin4_price']}" ,color= discord.Color.blue())
+            embed.set_thumbnail(url=skin_data["skin4_image"])    
             await ctx.send(embed=embed)
+
+            
 
 
 async def setup(client):
