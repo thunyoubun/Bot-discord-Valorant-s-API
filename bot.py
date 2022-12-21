@@ -6,7 +6,7 @@ from discord.ext import commands
 
 bot = commands.Bot(command_prefix="!" , intents=discord.Intents.all())
 
-BOT_TOKEN = "MTAxNDkxOTc5OTA4NTc0NDI1OQ.GQJd8U.w4_L2gWdGv634njoWTZzfBUgfuRC6r-yRLt5WA"
+BOT_TOKEN = "BOT_TOKEN"
 
 
     
