@@ -36,17 +36,15 @@ async def login(username,password):
 
 async def check_item_shop(username,password):
     user_data = await login(username, password)
-    #print(user_data[0])
-    print(f"Access Token: {user_data[0]}\n")
-    print(f"Entitlements Token: {user_data[1]}\n")
-    print(f"User ID: {user_data[2]}")
+    # print(f"Access Token: {user_data[0]}\n")
+    # print(f"Entitlements Token: {user_data[1]}\n")
+    # print(f"User ID: {user_data[2]}")
     access_token = user_data[0]
     entitlements_token = user_data[1]
     user_id = user_data[2]
-    skin_data = await  skins(entitlements_token, access_token, user_id)
+    skin_data =  skins(entitlements_token, access_token, user_id)
     skin_list = [skin_data["skin1_name"], skin_data["skin2_name"], skin_data["skin3_name"], skin_data["skin4_name"], skin_data["SingleItemOffersRemainingDurationInSeconds"]]
-    print(skin_data)
-    print("Really!!")
+    return skin_data
         
 def skins(entitlements_token, access_token, user_id):
 
@@ -175,6 +173,8 @@ def skins(entitlements_token, access_token, user_id):
         "skin4_price": skin4_price,
         "SingleItemOffersRemainingDurationInSeconds": daily_reset,
     }
+
+    #print(skins_list)
 
     return skins_list
 
