@@ -1,11 +1,7 @@
-import discord
 import asyncio
 import sys
 import requests
 import riot_auth
-
-def webhook(first, valorant_points, radianite_points, item_name, item_image, price, color):
-    global webhook_url
 
 def contentuuidconvert(contentuuid):
     content_tiers = requests.get("https://valorant-api.com/v1/contenttiers")
@@ -81,7 +77,6 @@ def skins(entitlements_token, access_token, user_id):
     # print(contentuuidconvert("e046854e-406c-37f4-6607-19a9ba8426fc"))
 
 
-    # Récupération des image de skins
     for skin in single_skins:
         for weapons_list in data_weapons['data']:
             for skin1 in weapons_list['skins']:

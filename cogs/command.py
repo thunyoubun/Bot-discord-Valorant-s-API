@@ -1,13 +1,6 @@
 import discord
-import asyncio
-import sys
-import requests
-import riot_auth
 from discord.ext import commands
 from utils.api import *
-from datetime import timedelta
-import time
-
 
 
 class Command(commands.Cog):
