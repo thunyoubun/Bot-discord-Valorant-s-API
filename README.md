@@ -1,5 +1,5 @@
 bot discord that can check your daily market in valorant !!
-command:
+## Command
 !login username password
 
 ## Screenshorts
