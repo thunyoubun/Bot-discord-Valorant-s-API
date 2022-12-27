@@ -1,4 +1,12 @@
-bot discord that can check your daily market in valorant !!
+<h1 align="center">
+  <br>
+  <a href="https://github.com/thunyoubun/Bot-discord-Valorant-s-API"></a>
+  <br>
+  Discord bot Valorant's API
+  <br>
+</h1>
+## About
+discord bot that can check your daily market in valorant !!
 ## Command
 !login username password
 
