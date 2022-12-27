@@ -6,10 +6,13 @@
   <br>
 </h1>
 
-## About
+
 discord bot that can check your daily market in valorant !!
 ## Command
-!login username password
+
+| Command                       | Action                                                                                                     |
+| :---------------------------- | :--------------------------------------------------------------------------------------------------------- |
+| `!login usernme password`  | get your daily store |
 
 ## Screenshorts
 
