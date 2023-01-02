@@ -8,6 +8,8 @@
 
 
 discord bot that can check your daily market in valorant !!
+https://discord.com/api/oauth2/authorize?client_id=1014919799085744259&permissions=137439332416&scope=bot
+
 ## Command
 
 | Command                       | Action                                                                                                     |
