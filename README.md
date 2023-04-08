@@ -14,7 +14,7 @@ discord bot that can check your daily market in valorant !!
 
 | Command                       | Action                                                                                                     |
 | :---------------------------- | :--------------------------------------------------------------------------------------------------------- |
-| `!login username password`  | get your daily store |
+| `/login username password`  | get your daily store |
 
 ## Screenshorts
 
