@@ -6,26 +6,31 @@ from discord.ext import commands
 
 bot = commands.Bot(command_prefix="!" , intents=discord.Intents.all())
 
-BOT_TOKEN = "TOKEN"
+BOT_TOKEN = "MTAxNDkxOTc5OTA4NTc0NDI1OQ.G-UWbS.yykAgMjb2-WaYGUycmcVHU7ZcRhiYdCZbeCnMs"
 
 
+class Bot(commands.Bot):
     
-@bot.event
-async def on_ready():
-    print(f"{bot.user} is connected!!")
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game('!login username password | เพื่อเช็คร้านค้า'))
-    
+    def __init__(self) -> None:
+        super().__init__(command_prefix='!',intents=discord.Intents.all(), application_id=1014919799085744259)
 
-
-async def load():
-    for filename in os.listdir("./cogs"):
-        if filename.endswith(".py"):
-            await bot.load_extension(f"cogs.{filename[:-3]}")
-
-async def main():
-    async with bot:
-        #await load()
-        await bot.start(BOT_TOKEN)
+    async def on_ready(self):
+        print(f"{self.user} is connected!!")
+        await bot.change_presence(status=discord.Status.online, activity=discord.Game('/login | เพื่อเช็คร้านค้า'))
         
 
-asyncio.run(main())
+
+    async def setup_hook(self):
+        for filename in os.listdir("./cogs"):
+            if filename.endswith(".py"):
+                await self.load_extension(f"cogs.{filename[:-3]}")
+        await bot.tree.sync(guild=None)
+
+    async def main():
+        async with bot:
+            #await load()
+            await bot.start(BOT_TOKEN)
+        
+
+bot = Bot()
+bot.run(BOT_TOKEN)
