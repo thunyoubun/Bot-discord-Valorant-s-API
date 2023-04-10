@@ -29,6 +29,7 @@ class command(commands.Cog):
 
     @app_commands.command(name="login",description="login to check dailyshop")
     async def login(self,interaction:discord.Interaction, username : str , password : str):
+        await interaction.response.defer()
         skin_data = await check_item_shop(username,password)
         #print(skin_data)
 
@@ -38,7 +39,7 @@ class command(commands.Cog):
         
         embed = discord.Embed(title=f"Daily store for {interaction.user} | Remaining in {int(skin_data['SingleItemOffersRemainingDurationInSeconds']/3600)} hour" ,color= discord.Color.random())
         embed.set_author(name=interaction.user, icon_url= interaction.user.avatar)
-        await interaction.response.send_message(embed=embed)
+        await interaction.followup.send(embed=embed)
         try:
             
             embed = discord.Embed(title=f"{skin_data['skin1_name']}", description= f"{skin_data['skin1_price']}" ,color= discord.Color.blue())
